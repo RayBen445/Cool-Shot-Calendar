@@ -2,34 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Web Calendar</title>
-                <link rel="stylesheet" href="style.css">
-                </head>
-                <body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Shot Calendar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-                    <div class="calendar-container">
-                            <header class="calendar-header">
-                                        <button id="prev-month-btn" class="nav-btn">&lt;</button>
-                                                    <h2 id="month-year-header">Month Year</h2>
-                                                                <button id="next-month-btn" class="nav-btn">&gt;</button>
-                                                                        </header>
+    <div class="main-container">
+        <h1 class="page-title">Cool Shot Calendar</h1>
+        <div class="calendar-container">
+            <header class="calendar-header">
+                <button id="prev-month-btn" class="nav-btn">&lt;</button>
+                <h2 id="month-year-header">Month Year</h2>
+                <button id="next-month-btn" class="nav-btn">&gt;</button>
+            </header>
 
-                                                                                <main class="calendar-body">
-                                                                                            <div class="weekdays">
-                                                                                                            <div>Sun</div>
-                                                                                                                            <div>Mon</div>
-                                                                                                                                            <div>Tue</div>
-                                                                                                                                                            <div>Wed</div>
-                                                                                                                                                                            <div>Thu</div>
-                                                                                                                                                                                            <div>Fri</div>
-                                                                                                                                                                                                            <div>Sat</div>
-                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                    <div class="days" id="calendar-days"></div>
-                                                                                                                                                                                                                                            </main>
-                                                                                                                                                                                                                                                </div>
+            <main class="calendar-body">
+                <div class="weekdays">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                <div class="days" id="calendar-days"></div>
+            </main>
+        </div>
+    </div>
 
-                                                                                                                                                                                                                                                    <script src="script.js"></script>
-                                                                                                                                                                                                                                                    </body>
-                                                                                                                                                                                                                                                    </html>
-                                                                                                                                                                                                                                                    
+    <script src="script.js"></script>
+</body>
+</html>
