@@ -1,0 +1,89 @@
+/* Basic styling for the entire page */
+body {
+    font-family: Arial, sans-serif;
+        display: flex;
+            justify-content: center;
+                align-items: center;
+                    height: 100vh;
+                        background-color: #f4f7f6;
+                            margin: 0;
+                            }
+
+                            /* The main container for the calendar */
+                            .calendar-container {
+                                width: 350px;
+                                    background-color: #ffffff;
+                                        border-radius: 10px;
+                                            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                                                overflow: hidden; /* Ensures children don't spill out of rounded corners */
+                                                }
+
+                                                /* Styling for the calendar header */
+                                                .calendar-header {
+                                                    display: flex;
+                                                        justify-content: space-between;
+                                                            align-items: center;
+                                                                padding: 15px 20px;
+                                                                    background-color: #007bff;
+                                                                        color: white;
+                                                                        }
+
+                                                                        #month-year-header {
+                                                                            margin: 0;
+                                                                                font-size: 1.2em;
+                                                                                }
+
+                                                                                /* Styling for the navigation buttons */
+                                                                                .nav-btn {
+                                                                                    background: none;
+                                                                                        border: none;
+                                                                                            color: white;
+                                                                                                font-size: 1.5em;
+                                                                                                    cursor: pointer;
+                                                                                                    }
+
+                                                                                                    /* Styling for the main calendar body */
+                                                                                                    .calendar-body {
+                                                                                                        padding: 20px;
+                                                                                                        }
+
+                                                                                                        /* Grid layout for weekdays and days */
+                                                                                                        .weekdays, .days {
+                                                                                                            display: grid;
+                                                                                                                grid-template-columns: repeat(7, 1fr);
+                                                                                                                    text-align: center;
+                                                                                                                    }
+
+                                                                                                                    /* Styling for the weekday names */
+                                                                                                                    .weekdays div {
+                                                                                                                        font-weight: bold;
+                                                                                                                            color: #333;
+                                                                                                                                padding-bottom: 10px;
+                                                                                                                                }
+
+                                                                                                                                /* Styling for the individual day cells */
+                                                                                                                                .days div {
+                                                                                                                                    padding: 10px 0;
+                                                                                                                                        margin: 2px;
+                                                                                                                                            cursor: pointer;
+                                                                                                                                                transition: background-color 0.3s;
+                                                                                                                                                    border-radius: 50%; /* Makes the day highlight circular */
+                                                                                                                                                    }
+
+                                                                                                                                                    /* Hover effect for days */
+                                                                                                                                                    .days div:hover:not(.empty) {
+                                                                                                                                                        background-color: #e0e0e0;
+                                                                                                                                                        }
+
+                                                                                                                                                        /* Special styling for the current day */
+                                                                                                                                                        .days .current-day {
+                                                                                                                                                            background-color: #007bff;
+                                                                                                                                                                color: white;
+                                                                                                                                                                }
+
+                                                                                                                                                                /* Styling for empty cells (days from previous/next month) */
+                                                                                                                                                                .days .empty {
+                                                                                                                                                                    cursor: default;
+                                                                                                                                                                        background-color: transparent;
+                                                                                                                                                                        }
+                                                                                                                                                                        
