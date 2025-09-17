@@ -47,12 +47,10 @@ function renderCalendar() {
     const firstDayIndex = firstDayOfMonth.getDay();
     const lastDayDate = lastDayOfMonth.getDate();
 
-    // Add empty cells for days before the 1st of the month
     for (let i = 0; i < firstDayIndex; i++) {
         calendarDays.insertAdjacentHTML('beforeend', '<div class="day empty"></div>');
     }
 
-    // Add cells for each day of the month
     for (let day = 1; day <= lastDayDate; day++) {
         const dayDate = new Date(year, month, day);
         const dayDiv = document.createElement('div');
@@ -69,7 +67,6 @@ function renderCalendar() {
             dayDiv.classList.add('selected-day');
         }
 
-        // Display entries for this day
         const dayEntries = entries.filter(e => new Date(e.date).toDateString() === dayDate.toDateString());
         if (dayEntries.length > 0) {
             const entriesContainer = document.createElement('div');
@@ -84,6 +81,7 @@ function renderCalendar() {
         }
 
         dayDiv.addEventListener('click', () => {
+            if (dayDiv.classList.contains('empty')) return;
             selectedDate = dayDate;
             openAddEntryModal(dayDate);
         });
@@ -91,7 +89,6 @@ function renderCalendar() {
         calendarDays.appendChild(dayDiv);
     }
 }
-
 
 /**
  * Opens the "Add Entry" modal for a specific date
@@ -109,7 +106,7 @@ function closeModal() {
     overlay.classList.remove('visible');
     addEntryModal.classList.remove('visible');
     dateSelector.classList.remove('visible');
-    entryTitleInput.value = ''; // Clear input field
+    entryTitleInput.value = '';
 }
 
 /**
