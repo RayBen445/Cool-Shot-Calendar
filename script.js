@@ -20,6 +20,10 @@ const entryDateDisplay = document.getElementById('entry-date-display');
 const entryTitleInput = document.getElementById('entry-title-input');
 const saveEntryBtn = document.getElementById('save-entry-btn');
 
+// --- DYNAMIC DATE ELEMENTS ---
+const titleYear = document.getElementById('title-year');
+const footerYear = document.getElementById('footer-year');
+
 // --- GLOBAL STATE ---
 let currentDate = new Date();
 let selectedDate = new Date();
@@ -63,7 +67,6 @@ function renderCalendar() {
             dayDiv.classList.add('selected-day');
         }
 
-        // Display entries for this day
         const dayEntries = entries.filter(e => new Date(e.date).toDateString() === dayDate.toDateString());
         const entriesContainer = document.createElement('div');
         entriesContainer.classList.add('entries-container');
@@ -88,7 +91,7 @@ function renderCalendar() {
  * Opens the "Add Entry" modal for a specific date
  */
 function openAddEntryModal(date) {
-    entryDateDisplay.textContent = date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    entryDateDisplay.textContent = date.toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     overlay.classList.add('visible');
     addEntryModal.classList.add('visible');
 }
@@ -159,12 +162,19 @@ closeModalBtn.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
 // --- INITIALIZATION ---
-(function populateSelector() {
+function initializeApp() {
+    const year = new Date().getFullYear();
+    titleYear.textContent = year;
+    footerYear.textContent = year;
+
     monthNames.forEach((month, index) => {
         const option = document.createElement('option');
         option.value = index;
         option.textContent = month;
         monthSelect.appendChild(option);
     });
-})();
-renderCalendar();
+
+    renderCalendar();
+}
+
+initializeApp(); // Run all initialization tasks
