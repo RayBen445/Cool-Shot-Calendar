@@ -337,4 +337,4 @@ body {
 }
 #save-entry-btn:active {
     box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
-    }
+}
