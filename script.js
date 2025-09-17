@@ -21,7 +21,7 @@ const entryTitleInput = document.getElementById('entry-title-input');
 const saveEntryBtn = document.getElementById('save-entry-btn');
 
 // --- DYNAMIC DATE ELEMENTS ---
-const titleYear = document.getElementById('title-year');
+const pageTitle = document.getElementById('page-title');
 const footerYear = document.getElementById('footer-year');
 
 // --- GLOBAL STATE ---
@@ -167,7 +167,7 @@ overlay.addEventListener('click', closeModal);
 // --- INITIALIZATION ---
 function initializeApp() {
     const year = new Date().getFullYear();
-    titleYear.textContent = year;
+    pageTitle.textContent = `Cool Shot Calendar - ${year}`;
     footerYear.textContent = year;
 
     monthNames.forEach((month, index) => {
