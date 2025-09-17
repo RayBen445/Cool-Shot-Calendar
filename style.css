@@ -127,7 +127,7 @@ body {
     border-radius: var(--radius);
     transition: all 0.2s ease-in-out;
 }
-.day:hover {
+.day:hover:not(.empty) {
     box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
 }
 
@@ -193,6 +193,136 @@ body {
                  -1px -1px 2px var(--shadow-light);
 }
 
+/* --- MODALS (Shared Styles) --- */
+.overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none; z-index: 99;
+}
+.overlay.visible { display: block; }
+
+.modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-color);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
+    z-index: 100;
+    display: none;
+}
+.modal.visible { display: block; }
+
+.close-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+/* --- DATE SELECTOR MODAL --- */
+#date-selector {
+    width: 300px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+#date-selector.visible { display: flex; }
+
+.selector-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+#date-selector select, #date-selector input, #go-to-date-btn {
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    padding: 10px;
+    border-radius: var(--radius);
+    background-color: var(--bg-color);
+    box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+    color: var(--text-color);
+}
+
+#go-to-date-btn {
+    cursor: pointer;
+    box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+}
+#go-to-date-btn:active {
+    box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+}
+
+/* --- ADD ENTRY MODAL --- */
+#add-entry-modal {
+    width: 350px;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-content h2 { margin: 0; text-align: center; }
+.modal-content p { margin: 0; text-align: center; font-size: 0.9em; }
+
+.entry-type-selector {
+    display: flex;
+    justify-content: space-around;
+    border-radius: var(--radius);
+    padding: 5px;
+    box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+}
+
+.entry-type-selector input[type="radio"] {
+    display: none;
+}
+
+.entry-type-selector label {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+    text-align: center;
+}
+
+.entry-type-selector input[type="radio"]:checked + label {
+    color: var(--primary-color);
+    font-weight: 600;
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+}
+
+#entry-title-input {
+    border: none;
+    padding: 12px;
+    border-radius: var(--radius);
+    background-color: var(--bg-color);
+    box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+#save-entry-btn {
+    border: none;
+    padding: 12px;
+    border-radius: var(--radius);
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1em;
+    background-color: var(--bg-color);
+    box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+    transition: all 0.2s ease-in-out;
+}
+#save-entry-btn:active {
+    box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+    }
 /* --- MODALS (Shared Styles) --- */
 .overlay {
     position: fixed;
