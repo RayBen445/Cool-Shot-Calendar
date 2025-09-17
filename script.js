@@ -28,12 +28,12 @@ const footerYear = document.getElementById('footer-year');
 let currentDate = new Date();
 let selectedDate = new Date();
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-let entries = []; // Array to store all our entries (events, tasks, etc.)
+let entries = []; // Array to store all our entries
 
 // --- FUNCTIONS ---
 
 /**
- * Main function to generate and display the calendar and its entries
+ * Main function to generate and display the calendar
  */
 function renderCalendar() {
     const year = currentDate.getFullYear();
@@ -47,18 +47,20 @@ function renderCalendar() {
     const firstDayIndex = firstDayOfMonth.getDay();
     const lastDayDate = lastDayOfMonth.getDate();
 
+    // Add empty cells for days before the 1st of the month
     for (let i = 0; i < firstDayIndex; i++) {
-        calendarDays.insertAdjacentHTML('beforeend', '<div class="empty"></div>');
+        calendarDays.insertAdjacentHTML('beforeend', '<div class="day empty"></div>');
     }
 
+    // Add cells for each day of the month
     for (let day = 1; day <= lastDayDate; day++) {
+        const dayDate = new Date(year, month, day);
         const dayDiv = document.createElement('div');
         dayDiv.classList.add('day');
+
         const dayNumber = document.createElement('span');
         dayNumber.textContent = day;
         dayDiv.appendChild(dayNumber);
-        
-        const dayDate = new Date(year, month, day);
 
         if (dayDate.toDateString() === new Date().toDateString()) {
             dayNumber.classList.add('current-day');
@@ -67,16 +69,19 @@ function renderCalendar() {
             dayDiv.classList.add('selected-day');
         }
 
+        // Display entries for this day
         const dayEntries = entries.filter(e => new Date(e.date).toDateString() === dayDate.toDateString());
-        const entriesContainer = document.createElement('div');
-        entriesContainer.classList.add('entries-container');
-        dayEntries.forEach(entry => {
-            const entryDiv = document.createElement('div');
-            entryDiv.classList.add('entry', `entry-${entry.type}`);
-            entryDiv.textContent = entry.title;
-            entriesContainer.appendChild(entryDiv);
-        });
-        dayDiv.appendChild(entriesContainer);
+        if (dayEntries.length > 0) {
+            const entriesContainer = document.createElement('div');
+            entriesContainer.classList.add('entries-container');
+            dayEntries.forEach(entry => {
+                const entryDiv = document.createElement('div');
+                entryDiv.classList.add('entry', `entry-${entry.type}`);
+                entryDiv.textContent = entry.title;
+                entriesContainer.appendChild(entryDiv);
+            });
+            dayDiv.appendChild(entriesContainer);
+        }
 
         dayDiv.addEventListener('click', () => {
             selectedDate = dayDate;
@@ -86,6 +91,7 @@ function renderCalendar() {
         calendarDays.appendChild(dayDiv);
     }
 }
+
 
 /**
  * Opens the "Add Entry" modal for a specific date
@@ -107,7 +113,7 @@ function closeModal() {
 }
 
 /**
- * Saves a new entry (event, task, or reminder)
+ * Saves a new entry
  */
 function saveEntry() {
     const title = entryTitleInput.value.trim();
@@ -177,4 +183,4 @@ function initializeApp() {
     renderCalendar();
 }
 
-initializeApp(); // Run all initialization tasks
+initializeApp();
